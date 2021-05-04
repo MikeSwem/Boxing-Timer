@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { CenteredUp, MainButton, GiveMeCredit } from "./Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFistRaised } from "@fortawesome/free-solid-svg-icons";
+import history from "../History";
 
 const Heading = styled.h1`
   text-align: center;
@@ -24,7 +25,9 @@ const HomePage = () => (
         <code>You owe me a beer dawg</code>
       </SubHeading>
       <MainButton>Start</MainButton>
-      <MainButton>Settings</MainButton>
+      <MainButton onClick={() => history.push("/settings")}>
+        Settings
+      </MainButton>
     </CenteredUp>
     <GiveMeCredit />
   </>

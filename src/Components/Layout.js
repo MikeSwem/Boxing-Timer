@@ -18,6 +18,14 @@ export const CenteredUp = styled.div`
   transform: translate(-50%, -50%);
 `;
 
+export const CenteredUpUp = styled.div`
+  width: auto;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 export const MainButton = styled.button`
   width: 100%;
   background-color: black;
@@ -34,6 +42,7 @@ export const MainButton = styled.button`
   margin-top:12px;
   font-weight: bold;
   font-size: 16px;
+
 `;
 
 export const BottomSimpleText = styled.p`

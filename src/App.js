@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import HomePage from "./Components/HomePage";
 import SettingsPage from "./Components/SettingsPage";
+import history from "./History";
 
 class App extends Component {
   render() {
@@ -11,12 +12,12 @@ class App extends Component {
           <h1 className="App-title">App for Cal</h1>
         </header> */}
         {/* <hr /> */}
-        <BrowserRouter>
+        <Router history={history}>
           <Switch>
-            <Route path="/" exact component={HomePage} />
             <Route path="/settings" component={SettingsPage} />
+            <Route path="/" exact component={HomePage} />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }

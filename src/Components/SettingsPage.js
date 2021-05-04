@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { CenteredUp, MainButton, GiveMeCredit } from "./Layout";
+import { MainButton } from "./Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
-
+import RadioButtonsGroup from "../Components/Inputs/RadioGroup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import history from "../History";
 const Heading = styled.h1`
   text-align: center;
 `;
@@ -11,31 +14,76 @@ const Heading = styled.h1`
 const SubHeading = styled.p`
   text-align: center;
 `;
+
+const SexierInput = styled.input`
+  border-radius: 12px;
+  padding: 8px;
+  width: 120px;
+  font-size: 21px;
+  :focus {
+    outline: none;
+  }
+  text-align: center;
+  font-weight: bold;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+
+  }
+
+  -moz-appearance: textfield;
+`;
+
+const success = () =>
+  toast.error("Updated Yo!!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
 const SettingsPage = () => (
   <>
-    <CenteredUp>
+    <div style={{ margin: "auto", marginTop: "3em", maxWidth: "580px" }}>
+      <ToastContainer />
       <Heading>
         Settings <FontAwesomeIcon icon={faCog} color={"red"} />
       </Heading>
-      <hr />
+      {/* <hr />s */}
       <SubHeading>
         <code>Rounds</code>
       </SubHeading>
-      <input />
+      <SexierInput type="tel" />
       <SubHeading>
         <code>Round Length</code>
       </SubHeading>
-      <input />
+      <SexierInput type="tel" />
       <SubHeading>
         <code>Rest Length</code>
       </SubHeading>
-      <input />
+      <SexierInput type="tel" />
       <SubHeading>
-        <code>Sound</code>
+        <code>Sound </code>
       </SubHeading>
-      <input />
-    </CenteredUp>
-    <GiveMeCredit />
+
+      <SubHeading>
+        <RadioButtonsGroup />
+      </SubHeading>
+      <div style={{ margin: "28px" }}>
+        <MainButton
+          onClick={() => {
+            success();
+          }}
+        >
+          Submit
+        </MainButton>
+        <MainButton onClick={() => history.push("/")}>Back</MainButton>
+      </div>
+    </div>
+    {/* <GiveMeCredit /> */}
   </>
 );
 
