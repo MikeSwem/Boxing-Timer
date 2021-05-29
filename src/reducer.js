@@ -19,6 +19,6 @@ export const MainReducer = (state = initialState, action) => {
 };
 
 export const updateSettings = (initialState) => {
-  // const { rounds, roundLength, restLength, endOfRoundCount, startCountDown } =
-  //   initialState;
+  const { rounds, roundLength, restLength, endOfRoundCount, startCountDown } =
+    initialState;
 };
