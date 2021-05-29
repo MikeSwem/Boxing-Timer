@@ -6,7 +6,16 @@ import { faCog } from "@fortawesome/free-solid-svg-icons";
 import RadioButtonsGroup from "../Components/Inputs/RadioGroup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
+import {
+  getEndOfRoundCount,
+  getRestLength,
+  getRoundLength,
+  getRounds,
+  getStartCountDown,
+} from "../Selectors";
 import history from "../History";
+
 const Heading = styled.h1`
   text-align: center;
 `;
@@ -45,46 +54,62 @@ const success = () =>
     progress: undefined,
   });
 
-const SettingsPage = () => (
-  <>
-    <div style={{ margin: "auto", marginTop: "3em", maxWidth: "580px" }}>
-      <ToastContainer />
-      <Heading>
-        Settings <FontAwesomeIcon icon={faCog} color={"red"} />
-      </Heading>
-      {/* <hr />s */}
-      <SubHeading>
-        <code>Rounds</code>
-      </SubHeading>
-      <SexierInput type="tel" />
-      <SubHeading>
-        <code>Round Length</code>
-      </SubHeading>
-      <SexierInput type="tel" />
-      <SubHeading>
-        <code>Rest Length</code>
-      </SubHeading>
-      <SexierInput type="tel" />
-      <SubHeading>
-        <code>Sound </code>
-      </SubHeading>
+const SettingsPage = () => {
+  const endOfRoundCount = useSelector(getEndOfRoundCount);
+  const restLength = useSelector(getRestLength);
+  const roundLength = useSelector(getRoundLength);
+  const rounds = useSelector(getRounds);
+  const startCountDown = useSelector(getStartCountDown);
 
-      <SubHeading>
-        <RadioButtonsGroup />
-      </SubHeading>
-      <div style={{ margin: "28px" }}>
-        <MainButton
-          onClick={() => {
-            success();
-          }}
-        >
-          Submit
-        </MainButton>
-        <MainButton onClick={() => history.push("/")}>Back</MainButton>
+  return (
+    <>
+      <div style={{ margin: "auto", marginTop: "3em", maxWidth: "580px" }}>
+        <ToastContainer />
+        <Heading>
+          Settings <FontAwesomeIcon icon={faCog} color={"red"} />
+        </Heading>
+        {/* <hr />s */}
+        <SubHeading>
+          <code>Rounds</code>
+        </SubHeading>
+        <SexierInput type="tel" value={rounds} />
+        <SubHeading>
+          <code>Round Length</code>
+        </SubHeading>
+        <SexierInput type="tel" value={roundLength} />
+        <SubHeading>
+          <code>Rest Length</code>
+        </SubHeading>
+        <SexierInput type="tel" value={restLength} />
+        <SubHeading>
+          <code>Start Timer Length</code>
+        </SubHeading>
+        <SexierInput type="tel" value={startCountDown} />
+        <SubHeading>
+          <code>End Of Round Length</code>
+        </SubHeading>
+        <SexierInput type="tel" value={endOfRoundCount} />
+        <SubHeading>
+          <code>Sound </code>
+        </SubHeading>
+
+        <SubHeading>
+          <RadioButtonsGroup />
+        </SubHeading>
+        <div style={{ margin: "28px" }}>
+          <MainButton
+            onClick={() => {
+              success();
+            }}
+          >
+            Submit
+          </MainButton>
+          <MainButton onClick={() => history.push("/")}>Back</MainButton>
+        </div>
       </div>
-    </div>
-    {/* <GiveMeCredit /> */}
-  </>
-);
+      {/* <GiveMeCredit /> */}
+    </>
+  );
+};
 
 export default SettingsPage;
