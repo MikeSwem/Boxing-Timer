@@ -3,6 +3,8 @@ import { Router, Route, Switch } from "react-router-dom";
 import HomePage from "./Components/HomePage";
 import SettingsPage from "./Components/SettingsPage";
 import history from "./History";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 class App extends Component {
   render() {
@@ -12,12 +14,14 @@ class App extends Component {
           <h1 className="App-title">App for Cal</h1>
         </header> */}
         {/* <hr /> */}
-        <Router history={history}>
-          <Switch>
-            <Route path="/settings" component={SettingsPage} />
-            <Route path="/" exact component={HomePage} />
-          </Switch>
-        </Router>
+        <Provider store={store}>
+          <Router history={history}>
+            <Switch>
+              <Route path="/settings" component={SettingsPage} />
+              <Route path="/" exact component={HomePage} />
+            </Switch>
+          </Router>
+        </Provider>
       </div>
     );
   }

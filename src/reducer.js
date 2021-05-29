@@ -1,6 +1,6 @@
 import { ActionTypes } from "./Constants";
 
-const initialState = {
+export const initialState = {
   rounds: 3,
   roundLength: 3,
   restLength: 1,
@@ -11,13 +11,14 @@ const initialState = {
 export const MainReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.SETTINGS:
-      return updateSettings(state);
+      updateSettings(state);
+      return state;
     default:
       return state;
   }
 };
 
 export const updateSettings = (initialState) => {
-  const { rounds, roundLength, restLength, endOfRoundCount, startCountDown } =
-    initialState;
+  // const { rounds, roundLength, restLength, endOfRoundCount, startCountDown } =
+  //   initialState;
 };
